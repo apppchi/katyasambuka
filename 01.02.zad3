@@ -1,0 +1,10 @@
+import csv
+
+with open("students_new.csv", encoding='utf8') as file:
+    reader = csv.reader(file, delimiter=',')
+    answer = list(reader)
+st = input()
+while st != 'СТОП':
+    for id, name, title, clas, score in answer:
+        if st == title:
+            print(f'Проект № {id} делал: <И. Фамилия> он(а) получил(а) оценку - {score}')
