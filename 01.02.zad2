@@ -1,0 +1,20 @@
+import csv
+
+with open("students.csv", encoding='utf8') as file:
+    reader = csv.reader(file, delimiter=',')
+    sp = list(reader)
+    for j in range(1, len(sp)):
+        if sp[j][-1] == 'None':
+            sp[j][-1] = str(0)
+    for i in range(2, len(sp)):
+        while i > 1 and int(sp[i][-1]) > int(sp[i - 1][-1]):
+            sp[i], sp[i - 1] = sp[i - 1], sp[i]
+            i -= 1
+    k = 0
+    b = 1
+    while k < 3:
+        if "10" in sp[b][3]:
+            print(sp[b][1].split()[1][0] + '.', sp[b][1].split()[0])
+            k += 1
+        b += 1
+    print(sp)
